@@ -16,5 +16,6 @@
       <Label layoutX="39.0" layoutY="293.0" text="First Name" />
       <Label layoutX="264.0" layoutY="293.0" text="Last Name" />
       <Button fx:id="btnAddPerson" layoutX="55.0" layoutY="379.0" mnemonicParsing="false" onMouseClicked="#handleBtnAddPersonClicked" prefHeight="25.0" prefWidth="120.0" text="Add" />
+      <Button fx:id="btnDelete" layoutX="392.0" layoutY="108.0" mnemonicParsing="false" onMouseClicked="#handleBtnDeletePersonClicked" prefHeight="25.0" prefWidth="81.0" text="Delete" />
   </children>
 </AnchorPane>

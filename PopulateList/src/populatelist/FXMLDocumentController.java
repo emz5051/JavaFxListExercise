@@ -40,6 +40,8 @@ public class FXMLDocumentController implements Initializable {
     private TextField tfLastName;
     @FXML
     private Button btnAddPerson;
+    @FXML
+    private Button btnDelete;
   
   @FXML
   private void handleButtonAction(ActionEvent event) {
@@ -89,6 +91,25 @@ public class FXMLDocumentController implements Initializable {
             String fullName = p.getFirstName() + " " + p.getLastName();
             lvPeople.getItems().add(fullName);
         }
+    }
+
+    @FXML
+    private void handleBtnDeletePersonClicked(MouseEvent event) {
+        String selectedText = lvPeople.getSelectionModel().getSelectedItem();
+        String[] idStr = selectedText.split(","[0]);
+        
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("PopulateListPU");
+        
+        PersonJpaController jpaPerson = new PersonJpaController(emf);
+        
+        try {
+            int id = Integer.parseInt(idStr);
+            jpaPerson.destroy(id);
+        } catch (Exception ex) {
+            Logger.getLogger(FXMLDocumentController.class.getName()).log(
+                    Level.SEVERE, null, ex);
+        }
+        SyncPeopleListView();
     }
   
 }
